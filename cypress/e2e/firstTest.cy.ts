@@ -12,8 +12,15 @@
 // https://on.cypress.io/introduction-to-cypress
 
 describe('example localhost', () => {
+    let url = 'http://localhost:8888'
     beforeEach(() => {
-      cy.visit('http://localhost:9000/')
+      cy.visit(url, {
+        headers: {
+            'user-agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+        },
+        timeout: 60000
+    });
+      
       cy.contains('Cuenta').click()
 
     })
