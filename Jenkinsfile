@@ -12,6 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh " mvn test -Dtest=MyTest"
+                sh "npx cypress open"
             }
         }
         stage('Deploy') {
