@@ -72,8 +72,9 @@
     "packaging": "jar"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "6.2.0",
-    "@fortawesome/free-solid-svg-icons": "6.2.0",
+    "@fortawesome/fontawesome-common-types": "^6.2.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "1.8.5",
     "axios": "0.27.2",
@@ -166,20 +167,6 @@
     "webpack-merge": "5.8.0",
     "webpack-notifier": "1.15.0",
     "workbox-webpack-plugin": "6.5.4"
-  },
-  "dependenciesMeta": {
-    "@fortawesome/fontawesome-common-types": {
-      "built": false
-    },
-    "@fortawesome/fontawesome-svg-core": {
-      "built": false
-    },
-    "@fortawesome/free-brands-svg-icons": {
-      "built": false
-    },
-    "@fortawesome/free-solid-svg-icons": {
-      "built": false
-    }
   },
   "engines": {
     "node": ">=16.17.0"
