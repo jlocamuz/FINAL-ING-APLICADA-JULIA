@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd probando2 && ls'
-                //sh 'mvn -B -DskipTests clean package'
+                sh 'npm install'
+                sh 'mvn -B -DskipTests clean package'
                 }
 
             }
