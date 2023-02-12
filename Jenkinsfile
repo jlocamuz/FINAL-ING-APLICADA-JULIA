@@ -1,13 +1,21 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'Maven 3.6.3'
+        jdk 'openjdk 11.0.17'
+    }
     stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
         stage('Build') {
             steps {
-                git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
-                withMaven {
-                sh "./mvnw"
-                } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+                sh './mvnw'
                 }
 
             }
