@@ -4,16 +4,10 @@ pipeline {
         maven '3.6.3'
     }
     stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                '''
-            }
-        }
         stage('Build') {
             steps {
-                sh './mvnw'
+                sh 'npm install'
+                sh 'mvn -B -DskipTests clean package'
                 }
 
             }
