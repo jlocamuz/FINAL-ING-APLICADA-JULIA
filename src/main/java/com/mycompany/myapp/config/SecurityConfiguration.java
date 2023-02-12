@@ -95,6 +95,7 @@ public class SecurityConfiguration {
             .httpBasic()
         .and()
             .apply(securityConfigurerAdapter());
+
         return http.build();
         // @formatter:on
     }

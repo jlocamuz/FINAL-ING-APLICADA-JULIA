@@ -42,7 +42,7 @@ public class MyTest {
         HttpClient client = HttpClient.newBuilder().build();
         HttpRequest request = HttpRequest
             .newBuilder()
-            .uri(URI.create("http://127.0.0.1:8080/api/blogs/1"))
+            .uri(URI.create("http://127.0.0.1:8888/api/blogs/1"))
             .header("Authorization", getBasicAuthenticationHeader("admin", "admin"))
             .build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
@@ -74,7 +74,7 @@ public class MyTest {
         HttpClient client = HttpClient.newBuilder().build();
         HttpRequest request = HttpRequest
             .newBuilder()
-            .uri(URI.create("http://127.0.0.1:8080/api/posts/1001"))
+            .uri(URI.create("http://127.0.0.1:8888/api/posts/1001"))
             .header("Authorization", getBasicAuthenticationHeader("admin", "admin"))
             .build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
