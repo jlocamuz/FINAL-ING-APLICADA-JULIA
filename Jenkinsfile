@@ -11,7 +11,7 @@ pipeline {
             }
         stage('Test') {
             steps {
-                sh "/usr/share/maven/bin/mvn clean test -e -Dgroups=categories.dbd -Dtest=com.mycompany.myapp.domain.MyTest"
+                sh " mvn test -Dtest=MyTest"
             }
         }
         stage('Deploy') {
