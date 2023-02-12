@@ -13,6 +13,7 @@ pipeline {
             steps {
                 sh " mvn test -Dtest=MyTest"
                 sh "npm install cypress@latest --save-de"
+                sh "npm i"
                 sh "./node_modules/.bin/cypress run"
             }
         }
