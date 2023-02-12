@@ -1,5 +1,3 @@
-mvnHome = /usr/share/maven
-
 pipeline {
     agent any
     stages {
