@@ -3,9 +3,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install --ignore-scripts',
+                sh 'npm install --ignore-scripts'
                 sh 'mvn -B -DskipTests clean package'
                 }
+            
 
             }
         stage('Test') {
