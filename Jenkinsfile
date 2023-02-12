@@ -12,8 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh " mvn test -Dtest=MyTest"
-                sh "npm install cypress --save-dev"
-                sh "npm i"
+                sh "npm install cypress --save-dev --ignore-scripts"
+                sh "npm i --ignore-scripts"
                 sh "./node_modules/.bin/cypress run"
             }
         }
