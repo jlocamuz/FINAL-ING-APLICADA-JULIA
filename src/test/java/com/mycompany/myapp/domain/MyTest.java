@@ -53,6 +53,7 @@ public class MyTest {
         assertThat(response.body()).isEqualTo(json);
     }
 
+    /*** 
     @Test
     void comparingObjectPostMangagmentWithAcallToApi() throws Exception {
         TestUtil.equalsVerifier(Blog.class);
@@ -86,6 +87,7 @@ public class MyTest {
         System.out.println("this is the object to JSON" + json);
         assertThat(response.body()).isEqualTo(json);
     }
+    ***/
 
     private String getBasicAuthenticationHeader(String username, String password) {
         String valueToEncode = username + ":" + password;

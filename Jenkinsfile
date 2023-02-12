@@ -1,3 +1,5 @@
+mvnHome = /usr/share/maven
+
 pipeline {
     agent any
     stages {
@@ -11,7 +13,7 @@ pipeline {
             }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh "/usr/share/maven/bin/mvn clean test -e -Dgroups=categories.dbd -Dtest=com.mycompany.myapp.domain.MyTest"
             }
         }
         stage('Deploy') {
