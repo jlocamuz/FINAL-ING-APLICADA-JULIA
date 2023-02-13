@@ -1,31 +1,14 @@
 node {
     
-    stage('checkout') {
-        checkout scm
-    }
+    stag('./mvn') {
+        sh 'mvn -B -DskipTests clean package'
 
-    stage('check java') {
-        sh "java -version"
     }
-
-    stage('clean') {
-        sh "chmod +x mvnw"
-        sh "./mvnw -ntp clean -P-webapp"
-    }
-    stage('nohttp') {
-        sh "./mvnw -ntp checkstyle:check"
-    }
-
-    stage('install tools') {
-        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm@install-node-and-npm"
-    }
-
     stage('npm install') {
         sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
     }
     stage('backend tests') {
        try {
-            sh "mvn -B -DskipTests clean package"
             sh " mvn test -Dtest=MyTest"
 
        } catch(err) {
