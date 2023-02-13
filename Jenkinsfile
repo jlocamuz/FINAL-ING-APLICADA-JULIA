@@ -20,7 +20,7 @@ pipeline {
         }
         stage('publish docker') {
             steps{
-                withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
+                withDockerRegistry([ credentialsId: "dockerhubaccount", variable: 'docker-hub']) {
                 script {
                     dockerImage.push()
                     }
