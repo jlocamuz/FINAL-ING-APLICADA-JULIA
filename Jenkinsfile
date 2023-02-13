@@ -25,6 +25,7 @@ node {
     }
     stage('backend tests') {
        try {
+            sh "mvn -B -DskipTests clean package"
             sh " mvn test -Dtest=MyTest"
 
        } catch(err) {
