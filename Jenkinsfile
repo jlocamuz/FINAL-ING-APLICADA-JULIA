@@ -14,7 +14,7 @@ pipeline {
                 sh "rm -rf node_modules package-lock.json"
                 sh " mvn test -Dtest=MyTest"
                 sh "npm install --ignore-scripts"
-                sh "npm install cypress --save"
+                sh "npm install cypress --save --ignore-scripts"
                 sh "./node_modules/.bin/cypress run"
             }
         }
