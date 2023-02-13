@@ -1,6 +1,6 @@
 node {
     
-    stag('./mvn') {
+    stage('./mvn') {
         sh 'mvn -B -DskipTests clean package'
 
     }
