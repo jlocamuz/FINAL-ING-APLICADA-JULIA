@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+        /***
         stage('Build') {
             steps {
                 sh 'npm install --ignore-scripts'
@@ -18,16 +19,14 @@ pipeline {
                 //sh "./node_modules/.bin/cypress run"
             }
         }
+        ***/
+        
+        def dockerImage
         stage('publish docker') {
-            steps{
-                withDockerRegistry([ credentialsId: "dockerhubaccount", url: 'https://hub.docker.com/app:latest']) {
-                script {
-                    dockerImage.push()
-                    }
-               
-                }
-        }
-
-    }
+            withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable:
+            'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+            sh "./mvnw -ntp jib:build"
+            }
+            }
     }
 }
