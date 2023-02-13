@@ -19,13 +19,5 @@ pipeline {
             }
         }
 
-        stage('Build image') {
-        dockerImage = docker.build("jlocamuz/jhipsterApp:latest")
-        }
-        
-        stage('Push image') {
-            withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
-            dockerImage.push()
-            }
-        }    
-    }}
+    }
+    }
