@@ -19,11 +19,13 @@ pipeline {
             }
         }
 
-        def dockerImage
-        stage('publish docker') {
-            withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable:
-                'kala59104', usernameVariable: 'jlocamuz')]) {
-                sh "./mvnw -ntp jib:build"
-            }
+        stage('Build image') {
+        dockerImage = docker.build("jlocamuz/jhipsterApp:latest")
         }
+        
+        stage('Push image') {
+            withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
+            dockerImage.push()
+            }
+        }    
     }}
