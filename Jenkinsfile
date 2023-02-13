@@ -20,10 +20,9 @@ pipeline {
         }
         stage('publish docker') {
             steps{
-            withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable:
-                'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
-                sh "./mvnw -ntp jib:build"
-            }
+                withDockerRegistry([ credentialsId: "dockerhubaccount", url: "" ]) {
+                dockerImage.push()
+                }
         }
 
     }
