@@ -11,6 +11,7 @@ pipeline {
             }
         stage('Test') {
             steps {
+                sh "rm -rf node_modules package-lock.json"
                 sh " mvn test -Dtest=MyTest"
                 sh "npm install --ignore-scripts"
                 sh "npm install cypress --save"
