@@ -20,7 +20,7 @@ pipeline {
         }
         stage('publish docker') {
             steps{
-                withDockerRegistry([ credentialsId: "dockerhubaccount", url: 'registry.hub.docker.com/library/busybox']) {
+                withDockerRegistry([ credentialsId: "dockerhubaccount", url: 'docker.io/app:latest']) {
                 script {
                     dockerImage.push()
                     }
