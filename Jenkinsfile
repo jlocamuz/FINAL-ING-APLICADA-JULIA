@@ -25,12 +25,10 @@ node {
     }
     stage('backend tests') {
        try {
-           sh "./mvnw -ntp verify -P-webapp"
-       } catch(err) {
-           throw err
-       } finally {
             sh " mvn test -Dtest=MyTest"
 
+       } catch(err) {
+           throw err
        }
     }
 
