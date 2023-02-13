@@ -23,25 +23,26 @@ node {
     stage('npm install') {
         sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
     }
-    //stage('backend tests') {
-    //    try {
-    //        sh "./mvnw -ntp verify -P-webapp"
-    //    } catch(err) {
-    //        throw err
-    //    } finally {
-    //        junit '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
-    //    }
-    //}
+    stage('backend tests') {
+       try {
+           sh "./mvnw -ntp verify -P-webapp"
+       } catch(err) {
+           throw err
+       } finally {
+            sh " mvn test -Dtest=MyTest"
 
-    //stage('frontend tests') {
-    //    try {
-    //        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
-    //    } catch(err) {
-    //        throw err
-    //    } finally {
-    //        junit '**/target/test-results/TESTS-results-jest.xml'
-    //    }
-    //}
+       }
+    }
+
+    stage('frontend tests') {
+       try {
+           sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
+       } catch(err) {
+           throw err
+       } finally {
+           sh "./node_modules/.bin/cypress run"
+       }
+    }
 
     stage('packaging') {
         sh "./mvnw -ntp verify -P-webapp -Pprod -DskipTests"
