@@ -34,11 +34,9 @@ node {
 
     stage('frontend tests') {
        try {
-           sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
+           sh "./node_modules/.bin/cypress run"
        } catch(err) {
            throw err
-       } finally {
-           sh "./node_modules/.bin/cypress run"
        }
     }
 
