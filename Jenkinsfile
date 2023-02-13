@@ -18,9 +18,12 @@ pipeline {
                 //sh "./node_modules/.bin/cypress run"
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+
+        def dockerImage
+        stage('publish docker') {
+            withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', passwordVariable:
+                'kala59104', usernameVariable: 'jlocamuz')]) {
+                sh "./mvnw -ntp jib:build"
             }
         }
     }}
