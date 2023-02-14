@@ -94,7 +94,15 @@ public class SecurityConfiguration {
         .and()
             .httpBasic()
         .and()
-            .apply(securityConfigurerAdapter());
+            .apply(securityConfigurerAdapter())
+        .and()
+            .requiresChannel()
+            .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+            .requiresSecure()
+        .and()
+            .authorizeRequests();
+
+    
 
         return http.build();
         // @formatter:on
